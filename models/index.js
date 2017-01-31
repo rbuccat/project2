@@ -11,8 +11,10 @@ var db        = {};
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  console.log('localdb;');
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+  console.log(config.database);
+  console.log(config.username);
+  console.log(config.password);
+  var sequelize = new Sequelize(config.database, config.username, config.password);
 }
 
 fs
