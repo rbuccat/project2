@@ -1,8 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../models");
+var passport = require("passport");
 
-router.get("/index", function(req, res) {
+router.get("/", function(req, res) {
   res.render('index');
 });
 
@@ -14,13 +15,67 @@ router.get("/messages", function(req, res) {
   res.render('messages');
 });
 
-router.get("/myprofile", function(req, res) {
-  res.render('myprofile');
+
+/* POST login page. */
+
+router.post('/login', passport.authenticate('local', { successRedirect: '/',
+                                                    failureRedirect: '/login' }));
+
+
+
+router.post('/login',
+  passport.authenticate('local'),
+  function(req, res) {
+  // If this function gets called, authentication was successful.
+  // `req.user` contains the authenticated user.
+  res.redirect('/users/' + req.user.username);
 });
 
-router.get("/profile/:id", function(req, res) {
-  res.render('profile');
-});
+router.post('/login',
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
+
+// router.post("/register", function(req, res) {
+//   db.Artist.create(req.body).then(function(dbregister) {
+//     res.json(dbRegister);
+//   });
+// });
+
+
+// router.post('/register', function(req, res) {
+// //     db.Artist.create(new Artist({ username : req.body.username }), req.body.password, function(err, account) {
+// //         if (err) {
+// //             return res.render('register', { artist : artist });
+// //         }
+// //
+// //         passport.authenticate('local')(req, res, function () {
+// //             res.redirect('/');
+// //         });
+// //     });
+// // });
+
+
+// router.get('/login', function(req, res) {
+//     res.render('login', { user : req.user });
+// });
+//
+// router.post('/login', passport.authenticate('local'), function(req, res) {
+//     res.redirect('/');
+// });
+//
+// router.get('/logout', function(req, res) {
+//     req.logout();
+//     res.redirect('/');
+// });
+//
+// router.get('/ping', function(req, res){
+//     res.status(200).send("pong!");
+// });
+
+
+
 // /* GET home page. */
 // router.get('/', function(req, res, next) {
 //  res.render('index', { title: 'Express' });

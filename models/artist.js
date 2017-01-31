@@ -10,9 +10,15 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING
     },
     available: {
-    	type: DataTypes.BOOLEAN, 
+    	type: DataTypes.BOOLEAN,
     	defaultValue: true
-    }
+    },
+    username: {
+        type: DataTypes.STRING
+    },
+    password: {
+        type: DataTypes.STRING
+    },
     });
   return Artist;
 };
