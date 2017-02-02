@@ -18,9 +18,15 @@ module.exports = function(sequelize, DataTypes) {
     genre: {
         type: DataTypes.STRING
     },
+    experience: {
+        type: DataTypes.STRING
+    },
     available: {
     	type: DataTypes.BOOLEAN, 
     	defaultValue: true
+    },
+    date: {
+        type: DataTypes.STRING
     }
     },
     {
