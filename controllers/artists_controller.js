@@ -50,7 +50,7 @@ router.get("/register", function(req, res) {
 
 // passport.authenticate('local', { successFlash: 'Welcome!' });
 
-router.post("/myprofile/create", function(req, res) {
+router.post("/register/create", function(req, res) {
   db.artist.create({
     artist_name: req.body.artist_name,
     email: req.body.email,
@@ -117,7 +117,6 @@ router.get("/myprofile", function(req, res) {
    res.render('myprofile', result.toJSON() );    
    });
 });
-
 
 router.get("/profile/:id", function(req, res) {
       db.artist.findOne({
