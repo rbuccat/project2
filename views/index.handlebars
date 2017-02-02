@@ -87,20 +87,20 @@
     <div class="searchbar">
       <div class="row">
         <div class="col-lg-6 col-sm-6">
-          <input type="text" class="form-control" placeholder="Search by Location">
+        <form role="form" action="/searchBy" method="POST">
+          <input name="location" type="text" class="form-control" placeholder="Search by location">
+          
+          <input name="genre" type="text" class="form-control" placeholder="Search by genre">
+
           <div class="row">
             <div class="col-lg-3 col-sm-3 ">
-              <select class="form-control">
-                <option>Rock</option>
-                <option>Pop</option>
-                <option>Rap</option>
-              </select>
+
             </div>
               <div class="col-lg-3 col-sm-4">
-              <button class="btn btn-success"  onclick="window.location.href='search'">Find Now</button>
+              <button class="btn btn-success">Find Now</button>
               </div>
           </div>
-          
+        </form>          
           
         </div>
         <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
