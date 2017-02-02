@@ -1,7 +1,168 @@
-<h1 style="color:black;">MY PROFILE : {{this.artist_name}}</h1>
+<!-- <h1 style="color:black;">MY PROFILE : {{this.artist_name}}</h1>
       <div >
         <div class="image-holder"><img src="{{this.photo}}"  height="350" width="250"class="img-responsive" />
         </div>
         <h4><a href="#">{{this.location}}</a></h4>
         <p style="color:black;">{{this.genre}}</p>
+      </div> -->
+<div class="container">
+<div class="properties-listing spacer">
+
+<div class="row">
+<div class="col-lg-3 col-sm-4 hidden-xs">
+<div class="hot-properties hidden-xs">
+<h4>Hot Properties</h4>
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="images/properties/4.jpg" class="img-responsive img-circle" alt="properties"/></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"/></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="images/properties/3.jpg" class="img-responsive img-circle" alt="properties"/></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="images/properties/2.jpg" class="img-responsive img-circle" alt="properties"/></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+
+</div>
+</div>
+
+<div class="col-lg-9 col-sm-8 ">
+<div class="row">
+<div class="col-md-6"><h2>{{this.artist_name}}</h2>
+</div>
+<div class="col-md-6"><button class="btn btn-info"   data-toggle="modal" data-target="#profilepop">Edit Profile</button></div>
+
+</div>
+<div class="row">
+  <div class="col-lg-8">
+  <div class="property-images">
+    <!-- Slider Starts -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators hidden-xs">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <!-- Item 1 -->
+        <div class="item active">
+          <img src="images/properties/4.jpg" class="properties" alt="properties" />
+        </div>
+        <!-- #Item 1 -->
+
+        <!-- Item 2 -->
+        <div class="item">
+          <img src="images/properties/2.jpg" class="properties" alt="properties" />
+         
+        </div>
+        <!-- #Item 2 -->
+
+        <!-- Item 3 -->
+         <div class="item">
+          <img src="images/properties/1.jpg" class="properties" alt="properties" />
+        </div>
+        <!-- #Item 3 -->
+
+        <!-- Item 4 -->
+        <div class="item ">
+          <img src="images/properties/3.jpg" class="properties" alt="properties" />
+          
+        </div>
+        <!-- # Item 4 -->
       </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+<!-- #Slider Ends -->
+
+  </div>
+  
+  <div class="row">
+  <div class="col-md-4">  
+  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Favorite Genres</h4>
+  <p>{{this.genre}}</p>
+  </div>
+  </div>
+  <div class="col-md-4">
+    <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
+  </div>
+  </div>
+  <div class="col-md-4"><div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
+  </div></div>
+  </div>
+
+  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
+  <p>{{this.experience}}</p>
+
+  </div>
+
+  </div>
+  <div class="col-lg-4">
+
+<div><h4><span class="glyphicon glyphicon-map-marker"></span>Availability</h4>
+
+    <!-- Form code begins -->
+    <form class="create-update-form" method="POST" action="/myprofile/update?_method=PUT">
+      <div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="date">Date</label>
+        <input class="form-control" name="date" placeholder="MM/DD/YYYY" type="text"/>
+       <!-- Submit button -->
+        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+      </div>
+     </form>
+     <!-- Form code ends --> 
+
+    
+  </div>
+
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div id="profilepop" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="row">
+        <form class="create-update-form" method="POST" action="/myprofile/update?_method=PUT">
+                <label for="artist_name">Full Name</label>
+                <input type="text" class="form-control" name="artist_name" value="{{this.artist_name}}">
+                <label for="artist_email">Email</label>
+                <input type="text" class="form-control" name="email" value="{{this.email}}">
+                <label for="location">Location</label>
+                <input type class="form-control" name="location" value="{{this.location}}">
+                <label for="genre">Genres</label>
+                <input type class="form-control" name="genre" value="{{this.genre}}">
+                <label for="experience">Experience</label>
+                <textarea rows="6" class="form-control" name="experience">{{this.experience}}</textarea><br>
+                <!--<label class="control-label" for="date">Date</label>
+         <input class="form-control" id="date" name="date" placeholder="Availabilty" type="text"/> -->
+      <button type="submit" class="btn btn-success" name="Submit">Submit</button>
+</form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.modal -->
