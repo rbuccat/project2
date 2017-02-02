@@ -10,6 +10,14 @@
 
 <div class="row">
 <div class="col-lg-3 col-sm-4 hidden-xs">
+<div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Search for</h4>
+    <form role="form" action="/searchBy" method="POST">
+          <input name="location" type="text" class="form-control" placeholder="Search by location">
+          
+          <input name="genre" type="text" class="form-control" placeholder="Search by genre">
+          <button class="btn btn-primary">Find Now</button>
+
+  </div>
 <div class="hot-properties hidden-xs">
 <h4>Hot Properties</h4>
 <div class="row">
@@ -96,17 +104,18 @@
   </div>
   
    
-  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span>Genres</h4>
+  <div class="spacer"><h4><span class="glyphicon glyphicon-music"></span> Genres</h4>
   <p>{{this.genre}}</p>
   </div>
   
     <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
   </div>
-  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
+  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Location</h4>
+  <p>{{this.location}}</p>
   </div>
   
 
-  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
+  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Experience</h4>
   <p>{{this.experience}}</p>
 
   </div>
