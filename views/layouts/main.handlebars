@@ -109,9 +109,9 @@
             <div class="col-lg-3 col-sm-3">
                     <h4>Newsletter</h4>
                     <p>Get notified about the latest properties in our marketplace.</p>
-                    <form class="form-inline" role="form">
-                            <input type="text" placeholder="Enter Your email address" class="form-control">
-                                <button class="btn btn-success" type="button">Notify Me!</button></form>
+                    <form class="form-inline" role="form" action="/mailMe" method="POST">
+                            <input  name="content" type="text" placeholder="Enter Your email address" class="form-control">
+                                <input id="send_mail" class="btn btn-success" type="submit" value="Notify Me!" /></form>
             </div>
             
             <div class="col-lg-3 col-sm-3">

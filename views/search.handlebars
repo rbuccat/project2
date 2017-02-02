@@ -1,14 +1,9 @@
-			<h1 style="color:black;">Artists: </h1>
-			  {{#each artist_data}}
- <div id="owl-example" class="owl-carousel">
-      <div class="properties">
-        <div class="image-holder"><img src="{{this.photo}}" class="img-responsive"/>
-          <div class="status sold">{{this.artist_name}}</div>
-        </div>
-        <h4><a href="property-detail.php">{{this.location}}</a></h4>
-        <p style="color:black;">{{this.genre}}</p>
-      </div>
- </div>
+<h1 style="color:black;">Artists: </h1>
+  {{#each artist_data}}
+          <div style="margin-left: 50%;"><img  src="{{this.photo}}" height="250" width="150" class="img-responsive"/>
+            <div style="color:black;"  >{{this.artist_name}}</div>
+          <h4><a href="property-detail.php">{{this.location}}</a></h4>
+          <p style="color:black;">{{this.genre}}</p>
+   </div>
+  {{/each}}
 			
-			  {{/each}}
-			</div>
