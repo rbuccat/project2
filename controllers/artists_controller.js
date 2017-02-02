@@ -6,6 +6,7 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models");
 var passport = require("passport");
+
 var nodemailer =require("nodemailer");
 
 var smtpTransport = nodemailer.createTransport({
@@ -78,6 +79,7 @@ router.put("/myprofile/update", function(req, res) {
     });
   });
 
+
 // router.get("/search", function(req, res) {
 //     db.artist.findAll({}).then(function(result) {  
 //    res.render("search", { artist_data: result}); 
@@ -92,6 +94,11 @@ router.post("/searchBy", function(req, res) {
       }
     }).then(function(result) { 
    res.render("search", { artist_data: result}); 
+
+
+router.get("/search", function(req, res) {
+    db.artist.findAll({}).then(function(result) {
+   res.render("search", { artist_data: result});    
 
    });
 });
@@ -111,21 +118,20 @@ router.get("/myprofile", function(req, res) {
    });
 });
 
-// <<<<<<< HEAD
+
 router.get("/profile/:id", function(req, res) {
       db.artist.findOne({
       where: {id: req.params.id}
    }).then(function(Artist) {
    res.render('profile', { artist_data: Artist });    
    });
-// =======
+
 // router.get("/profile/:id", function(req, res) {
 //       db.artist.findOne({
 //        where: {id: req.params.id}
 //    }).then(function(Artist) {
 //    res.render('profile', { artist_data: Artist });    
 //    });
-// >>>>>>> 60f40a024b764e6463e19d2fc3d40fbcec174bc8
 
 });
 
@@ -151,6 +157,10 @@ router.post("/mailMe", function(req, res) {
         }
     });
 });
+
+
+});
+
 
 
 module.exports = router;
