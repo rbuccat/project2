@@ -95,19 +95,16 @@
 
   </div>
   
-  <div class="row">
-  <div class="col-md-4">  
-  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Favorite Genres</h4>
+   
+  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span>Genres</h4>
   <p>{{this.genre}}</p>
   </div>
-  </div>
-  <div class="col-md-4">
+  
     <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
   </div>
+  <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
   </div>
-  <div class="col-md-4"><div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
-  </div></div>
-  </div>
+  
 
   <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
   <p>{{this.experience}}</p>
@@ -117,8 +114,8 @@
   </div>
   <div class="col-lg-4">
 
-<div><h4><span class="glyphicon glyphicon-map-marker"></span>Availability</h4>
-
+<div><h4><span class="glyphicon glyphicon-calendar"></span>Availability</h4>
+<h3>{{this.date}}</h3>
     <!-- Form code begins -->
     <form class="create-update-form" method="POST" action="/myprofile/update?_method=PUT">
       <div class="form-group"> <!-- Date input -->
