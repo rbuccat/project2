@@ -24,7 +24,8 @@ router.get("/", function(req, res) {
 router.post('/login', passport.authenticate('local', { 
 	successRedirect: '/',
     failureRedirect: '/login' 
-}));
+})
+);
 
 router.get("/register", function(req, res) {
  res.render('register');
@@ -93,7 +94,9 @@ router.post("/searchBy", function(req, res) {
         genre: req.body.genre
       }
     }).then(function(result) { 
-   res.render("search", { artist_data: result}); 
+   res.render("search", { artist_data: result});
+});
+})    
 
 
 router.get("/search", function(req, res) {
@@ -155,11 +158,6 @@ router.post("/mailMe", function(req, res) {
             //make redirect here
         }
     });
-});
-
-
-});
-
-
+})
 
 module.exports = router;
