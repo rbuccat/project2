@@ -12,9 +12,14 @@ router.get("/", function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', { 
-	successRedirect: '/blah',
+	successRedirect: '/',
     failureRedirect: '/login' 
 }));
+
+router.get("/register", function(req, res) {
+ res.render('register');
+});
+
 
 // router.post('/login',
 //   passport.authenticate('local'),
@@ -35,6 +40,35 @@ router.post('/login', passport.authenticate('local', {
 
 // passport.authenticate('local', { successFlash: 'Welcome!' });
 
+router.post("/myprofile/create", function(req, res) {
+  db.artist.create({
+    artist_name: req.body.artist_name,
+    email: req.body.email,
+    artist_password: req.body.artist_password,
+    genre: req.body.genre
+  }).then(function(){
+    res.redirect("/myprofile");
+  })
+});
+
+router.put("/myprofile/update", function(req, res) {
+    db.artist.update({
+      artist_name: req.body.artist_name,
+      email: req.body.email,
+      location: req.body.location,
+      genre: req.body.genre,
+      experience: req.body.experience,
+      date: req.body.date
+    },{
+        where: {
+          id: 1
+        }
+      })
+    .then(function() {
+      res.redirect("/myprofile");
+    });
+  });
+
 router.get("/search", function(req, res) {
     db.artist.findAll({}).then(function(result) {
    res.render("search", { artist_data: result});    
@@ -45,6 +79,8 @@ router.get("/messages", function(req, res) {
  res.render('messages');
 });
 
+
+
 router.get("/myprofile", function(req, res) {
    db.artist.findOne({
        where: {id: 1}
@@ -54,14 +90,14 @@ router.get("/myprofile", function(req, res) {
    });
 });
 
-router.get("/profile/:id", function(req, res) {
-      db.artist.findOne({
-       where: {id: req.params.id}
-   }).then(function(Artist) {
-   res.render('profile', { artist_data: Artist });    
-   });
+// router.get("/profile/:id", function(req, res) {
+//       db.artist.findOne({
+//        where: {id: req.params.id}
+//    }).then(function(Artist) {
+//    res.render('profile', { artist_data: Artist });    
+//    });
 
-});
+//});
 
 
 module.exports = router;

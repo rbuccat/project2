@@ -62,6 +62,23 @@ var routes = require("./controllers/artists_controller.js");
 
 app.use("/", routes);
 
+// Image.sync({force: true}).on('success', function() {
+//   console.log("reading image")
+//   var image = fs.readFileSync(__dirname + '/../config/config.json').toString("base64")
+//   console.log("done\n")
+
+//   console.log("creating database entry")
+//   Image.create({photo: image}).on('success', function(img) {
+//     console.log("done\n")
+
+//     console.log("writing file")
+//     fs.writeFileSync(__dirname + '/target.png', img.photo, "base64")
+//     console.log("done\n")
+
+//     console.log("you might open the file ./target.png")
+//   })
+// })
+
 db.sequelize.sync({ force: false }).then(function(){
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);

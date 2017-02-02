@@ -26,6 +26,9 @@
     <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>
     <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>
 <!-- slitslider -->
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="assets/css/datepicker.css"/>
 <!-- 		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" /> -->
 		<title>Music for now</title>
 	</head>
@@ -162,7 +165,7 @@
         <div class="col-sm-6">
           <h4>New User Sign Up</h4>
           <p>Join today and get updated with all the properties deal happening around.</p>
-          <button type="submit" class="btn btn-info"  onclick="window.location.href='register.php'">Join Now</button>
+          <button type="submit" class="btn btn-info"  onclick="window.location.href='/register'">Join Now</button>
         </div>
 
       </div>
@@ -172,5 +175,17 @@
 <!-- /.modal -->
 
 	</body>
-
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
 </html>
