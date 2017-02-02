@@ -22,7 +22,7 @@ router.get("/", function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', { 
-	successRedirect: '/',
+	successRedirect: '/myprofile',
     failureRedirect: '/login' 
 })
 );
@@ -90,21 +90,25 @@ router.put("/myprofile/update", function(req, res) {
 router.post("/searchBy", function(req, res) {
     db.artist.findAll({
       where: {
-        location: req.body.location,
+        $or:{
+        location: req.body.location, 
         genre: req.body.genre
       }
-    }).then(function(result) { 
+      }
+    }).then(function(result) {
+    console.log(result); 
    res.render("search", { artist_data: result});
 });
 })    
 
 
-router.get("/search", function(req, res) {
-    db.artist.findAll({}).then(function(result) {
-   res.render("search", { artist_data: result});    
 
-   });
-});
+// router.get("/search", function(req, res) {
+//     db.artist.findAll({}).then(function(result) {
+//    res.render("search", { artist_data: result});    
+
+//    });
+// });
 
 router.get("/messages", function(req, res) {
  res.render('messages');
