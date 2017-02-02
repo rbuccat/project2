@@ -1,24 +1,37 @@
 module.exports = function(sequelize, DataTypes) {
-  var Artist = sequelize.define("Artist", {
+  var artist = sequelize.define("artist", {
+    photo: {
+        type: DataTypes.STRING
+    },
     artist_name: {
     	type: DataTypes.STRING
     },
-    artist_location: {
+    location: {
         type: DataTypes.STRING
     },
-    artist_genre: {
+    email: {
+        type: DataTypes.STRING
+    },
+    artist_password: {
+        type: DataTypes.STRING
+    },
+    genre: {
+        type: DataTypes.STRING
+    },
+    experience: {
         type: DataTypes.STRING
     },
     available: {
     	type: DataTypes.BOOLEAN,
     	defaultValue: true
     },
-    username: {
+
+    date: {
         type: DataTypes.STRING
+    }
     },
-    password: {
-        type: DataTypes.STRING
-    },
-    });
-  return Artist;
+    {
+    timestamps: false
+});
+  return artist;
 };

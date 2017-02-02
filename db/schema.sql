@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS artists_db;
 USE artists_db;
 

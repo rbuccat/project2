@@ -1,19 +1,25 @@
+//each route, we need to send and recieve data
+//create and update for myprofile
+//create logic that looks up artist by id
+
 var express = require("express");
 var router = express.Router();
 var db = require("../models");
 var passport = require("passport");
 
 router.get("/", function(req, res) {
-  res.render('index');
+ res.render('index');
 });
 
-router.get("/search", function(req, res) {
-  res.render('search');
+router.post('/login', passport.authenticate('local', {
+	successRedirect: '/',
+    failureRedirect: '/login'
+}));
+
+router.get("/register", function(req, res) {
+ res.render('register');
 });
 
-router.get("/messages", function(req, res) {
-  res.render('messages');
-});
 
 /* POST login page. */
 
@@ -101,39 +107,84 @@ app.get('/api/users/me',
 // /* GET home page. */
 // router.get('/', function(req, res, next) {
 //  res.render('index', { title: 'Express' });
+
+// router.post('/login',
+//   passport.authenticate('local'),
+//   function(req, res) {
+//   // If this function gets called, authentication was successful.
+//   // `req.user` contains the authenticated user.
+//   res.redirect('/users/' + req.user.username);
 // });
 
-/* GET home page. */
-// router.get('/profile/:id', function(req, res, next) {
+// router.post('/login',
+//   passport.authenticate('local', { successRedirect: '/',
+//                                    failureRedirect: '/login',
+//                                    failureFlash: true })
+// );
 
- //Write logic that looks up artist by ID
 
- // myapp.com/artist/123
+// passport.authenticate('local', { failureFlash: 'Invalid username or password.' });
 
- // In the example above 123 would equal =  req.params.id
+// passport.authenticate('local', { successFlash: 'Welcome!' });
 
- // get all artist where id =  req.params.id
+router.post("/myprofile/create", function(req, res) {
+  db.artist.create({
+    artist_name: req.body.artist_name,
+    email: req.body.email,
+    artist_password: req.body.artist_password,
+    genre: req.body.genre
+  }).then(function(){
+    res.redirect("/myprofile");
+  })
+});
 
-//  var mathTeacher = req.params.id *2;
+router.put("/myprofile/update", function(req, res) {
+    db.artist.update({
+      artist_name: req.body.artist_name,
+      email: req.body.email,
+      location: req.body.location,
+      genre: req.body.genre,
+      experience: req.body.experience,
+      date: req.body.date
+    },{
+        where: {
+          id: 1
+        }
+      })
+    .then(function() {
+      res.redirect("/myprofile");
+    });
+  });
 
-//  res.render('templates/artist_search', { title: mathTeacher, name: 'anthony' });
-// });
+router.get("/search", function(req, res) {
+    db.artist.findAll({}).then(function(result) {
+   res.render("search", { artist_data: result});
+   });
+});
 
-// router.get('/artist_search', function(req, res, next) {
+router.get("/messages", function(req, res) {
+ res.render('messages');
+});
 
-// });
 
-// router.get('/scheduling/:id', function(req, res, next) {
-//  res.render('templates/scheduling', { title: 'Express' });
-// });
 
-// router.get('/messages/:id', function(req, res, next) {
-//  res.render('templates/messages', { title: 'Express' });
-// });
+router.get("/myprofile", function(req, res) {
+   db.artist.findOne({
+       where: {id: 1}
+   }).then(function(result) {
+       console.dir(result.toJSON());
+   res.render('myprofile', result.toJSON() );
+   });
+});
 
-/* POST login page. */
-// router.post('/login', function(req, res, next) {
-//  res.render('index', { title: 'Login' });
-// });
+// router.get("/profile/:id", function(req, res) {
+//       db.artist.findOne({
+//        where: {id: req.params.id}
+//    }).then(function(Artist) {
+//    res.render('profile', { artist_data: Artist });
+//    });
+
+//});
+
 
 module.exports = router;
