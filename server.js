@@ -7,12 +7,14 @@ var PORT = 3000;
 var app = express();
 var db = require("./models");
 
+
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
     console.log("\nlogin\n");
+
     // db.artist.findAll().then(function(user) { console.dir(user); });
 
     db.artist.findOne({where:{ email: username }}).then(function(user) {
@@ -26,6 +28,7 @@ passport.use(new LocalStrategy(
       return done(null, user);
     }).catch(function(err){
     	return done(err);
+
     });
   }
 ));
@@ -50,6 +53,10 @@ passport.deserializeUser(function(id, done) {
 });
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
+
+app.use(passport.initialize());
+
+app.use(passport.session());
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");

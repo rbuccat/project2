@@ -22,9 +22,10 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING
     },
     available: {
-    	type: DataTypes.BOOLEAN, 
+    	type: DataTypes.BOOLEAN,
     	defaultValue: true
     },
+
     date: {
         type: DataTypes.STRING
     }
