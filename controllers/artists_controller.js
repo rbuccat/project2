@@ -59,7 +59,10 @@ passport.deserializeUser(function(id, done) {
 
 
 router.get("/", function(req, res) {
- res.render('index');
+  db.artist.findAll({}).then(function(result) {
+    console.log(result); 
+   res.render("index", { artist_data: result});
+});
 });
 
 router.post('/login', passport.authenticate('local', { 

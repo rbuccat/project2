@@ -1,3 +1,20 @@
+<div class="row">
+<div class="header" style="height:20px;">
+
+<div class="col-md-3">
+<a href="/"><img src="images/ourlogo.jpg" alt="artist" style="margin: -90px 0 0 -90px; height: 110px;"></a>
+
+              <!-- <ul class="pull-right">
+                <li><a href="buysalerent.php">Buy</a></li>
+                <li><a href="buysalerent.php">Sale</a></li>         
+                <li><a href="buysalerent.php">Rent</a></li>
+              </ul> -->
+</div>              
+<div class="col-md-3" style="margin-top: -70px;"><h1 style="color: #000;">GROOVEDOTCOM</h1></div>
+<div class="col-md-3"></div>
+<div class="col-md-3"></div>
+</div>
+</div>
 <div class="">
 
             <div id="slider" class="sl-slider-wrapper">
@@ -7,60 +24,35 @@
           <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-1"></div>
-              <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-              <blockquote>              
-              <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-              <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-              <cite>$ 20,000,000</cite>
-              </blockquote>
+              <h2><a href="#">Book Your Favorite Artist.</a></h2>
             </div>
           </div>
           
           <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-2"></div>
-              <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-              <blockquote>              
-              <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-              <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-              <cite>$ 20,000,000</cite>
-              </blockquote>
+              <h2><a href="#">Book Your Favorite Artist.</a></h2>
             </div>
           </div>
           
           <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-3" id="recentMember"></div>
-              <h2 id="namedisplay"><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-              <blockquote>              
-              <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-              <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-              <cite>$ 20,000,000</cite>
-              </blockquote>
+              <h2 id="namedisplay"><a href="#">Book Your Favorite Artist.</a></h2>
             </div>
           </div>
           
           <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-4"></div>
-              <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-              <blockquote>              
-              <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-              <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-              <cite>$ 20,000,000</cite>
-              </blockquote>
+              <h2><a href="#">Book Your Favorite Artist.</a></h2>
             </div>
           </div>
           
           <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-5"></div>
-              <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-              <blockquote>              
-              <p class="location"><span class="glyphicon glyphicon-map-marker"></span> 1890 Syndey, Australia</p>
-              <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-              <cite>$ 20,000,000</cite>
-              </blockquote>
+              <h2><a href="#">Book Your Favorite Artist.</a></h2>
             </div>
           </div>
         </div><!-- /sl-slider -->
@@ -104,7 +96,7 @@
           
         </div>
         <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
-          <p>Join now and get updated with all new artists</p>
+          <p style="color:#FFF;">Join now and get updated with all new artists</p>
           <button class="btn btn-info"   data-toggle="modal" data-target="#loginpop">Login</button>        </div>
       </div>
     </div>
@@ -115,16 +107,18 @@
   <div class="properties-listing spacer"> <a href="buysalerent.php" class="pull-right viewall">View All Listing</a>
     <h2>Featured Artists</h2>
     <div id="owl-example" class="owl-carousel">
+    {{#each artist_data}}
       <div class="properties">
-        <div class="image-holder"><img src="images/mainpic_1.jpg" class="img-responsive" alt="properties"/>
-          <div class="status sold">Sold</div>
+        <div class="image-holder"><img src="{{this.photo}}" class="img-responsive" alt="properties"/>
+        {{availability this.available}}
         </div>
-        <h4><a href="property-detail.php">Royal Inn</a></h4>
-        <p class="price">Price: $234,900</p>
-        <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
+        <h4><a href="property-detail.php">{{this.artist_name}}</a></h4>
+        <p class="price">{{this.genre}}</p>
+        <p class="price">{{this.location}}</p>
         <a class="btn btn-primary" href="property-detail.php">View Details</a>
       </div>
-      <div class="properties">
+      {{/each}}
+      <!-- <div class="properties">
         <div class="image-holder"><img src="images/properties/2.jpg" class="img-responsive" alt="properties"/>
           <div class="status new">New</div>
         </div>
@@ -201,7 +195,7 @@
         <p class="price">Price: $234,900</p>
         <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div>
         <a class="btn btn-primary" href="property-detail.php">View Details</a>
-      </div>
+      </div> -->
       
     </div>
   </div>
