@@ -1,6 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var exphbs  = require('express-handlebars');
 
 var PORT = 3000;
 
@@ -44,11 +45,6 @@ app.use(passport.session());
 //   done(null, user.id);
 // });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 
@@ -57,6 +53,18 @@ var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+var hbs = require('handlebars');
+hbs.registerHelper("availability", function(options)
+{
+    var stringVal = '';
+    if (options === '1'){
+      stringVal = "<div class='status sold'>" + Available + "</div>"
+    }else{
+      stringVal = "<div class='status new'>" + Not Available + "</div>"
+    }
+
+    return new hbs.SafeString(stringVal);
+});
 
 // Import routes and give the server access to them.
 var routes = require("./controllers/artists_controller.js");
