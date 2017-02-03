@@ -24,8 +24,6 @@ passport.use(new LocalStrategy(
       //   return done(null, false, { message: 'Incorrect password.' });
       // }else{ 
       return done(null, user);
-      console.log("success");
-    
     }).catch(function(err){
     	return done(err);
     });
@@ -40,10 +38,11 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
-passport.serializeUser(function(user, done) {
-  console.dir(user);
-  done(null, user.id);
-});
+// passport.serializeUser(function(user, done) {
+//   console.dir(user);
+//   console.log("THIS IS THE " + user.email + "!!!!!!!!");
+//   done(null, user.id);
+// });
 
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {

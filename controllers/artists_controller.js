@@ -17,12 +17,53 @@ var smtpTransport = nodemailer.createTransport({
     }
 });
 
+passport.serializeUser(function(user, done) {
+  console.dir(user);
+  console.log("THIS IS THE " + user.id + "!!!!!!!!");
+  done(null, user.id);
+  router.get("/myprofile", function(req, res) {
+   db.artist.findOne({
+       where: {
+        id: user.id
+      }
+   }).then(function(result) {
+       console.dir(result.toJSON());
+   res.render('myprofile', result.toJSON());    
+   });
+});
+  router.put("/myprofile/update", function(req, res) {
+    db.artist.update({
+      artist_name: req.body.artist_name,
+      email: req.body.email,
+      location: req.body.location,
+      genre: req.body.genre,
+      experience: req.body.experience,
+      date: req.body.date
+    },{
+        where: {
+          id: user.id
+        }
+      })
+    .then(function() {
+      res.redirect("/myprofile");
+    });
+  });
+});
+
+passport.deserializeUser(function(id, done) {
+  db.artist.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+
+
 router.get("/", function(req, res) {
  res.render('index');
 });
 
 router.post('/login', passport.authenticate('local', { 
-	successRedirect: '/myprofile',
+	successRedirect: '/',
     failureRedirect: '/login' 
 })
 );
@@ -56,29 +97,14 @@ router.post("/register/create", function(req, res) {
     artist_name: req.body.artist_name,
     email: req.body.email,
     artist_password: req.body.artist_password,
-    genre: req.body.genre
+    genre: req.body.genre,
+    photo: req.body.photo
   }).then(function(){
-    res.redirect("/myprofile");
+    res.redirect("/");
   })
 });
 
-router.put("/myprofile/update", function(req, res) {
-    db.artist.update({
-      artist_name: req.body.artist_name,
-      email: req.body.email,
-      location: req.body.location,
-      genre: req.body.genre,
-      experience: req.body.experience,
-      date: req.body.date
-    },{
-        where: {
-          id: 1
-        }
-      })
-    .then(function() {
-      res.redirect("/myprofile");
-    });
-  });
+
 
 
 // router.get("/search", function(req, res) {
@@ -116,14 +142,7 @@ router.get("/messages", function(req, res) {
 
 
 
-router.get("/myprofile", function(req, res) {
-   db.artist.findOne({
-       where: {id: 1}
-   }).then(function(result) {
-       console.dir(result.toJSON());
-   res.render('myprofile', result.toJSON() );    
-   });
-});
+
 
 router.get("/profile/:id", function(req, res) {
       db.artist.findOne({
