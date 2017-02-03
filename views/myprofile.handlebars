@@ -1,16 +1,9 @@
-<!-- <h1 style="color:black;">MY PROFILE : {{this.artist_name}}</h1>
-      <div >
-        <div class="image-holder"><img src="{{this.photo}}"  height="350" width="250"class="img-responsive" />
-        </div>
-        <h4><a href="#">{{this.location}}</a></h4>
-        <p style="color:black;">{{this.genre}}</p>
-      </div> -->
 <div class="container">
 <div class="properties-listing spacer">
 
 <div class="row">
 <div class="col-lg-3 col-sm-4 hidden-xs">
-<div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Search for</h4>
+<div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Search for Artists</h4>
     <form role="form" action="/searchBy" method="POST">
           <input name="location" type="text" class="form-control" placeholder="Search by location">
           
@@ -24,7 +17,7 @@
 
 <div class="col-lg-9 col-sm-8 ">
 <div class="row">
-<div class="col-md-6"><h2>{{this.artist_name}}</h2>
+<div class="col-md-6"><h2 id="artist" data-artist="{{this.artist_name}}">{{this.artist_name}}</h2>
 </div>
 <div class="col-md-6"><button class="btn btn-info"   data-toggle="modal" data-target="#profilepop">Edit Profile</button></div>
 
@@ -44,12 +37,13 @@
   <p>{{this.genre}}</p>
   </div>
   
-    <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Artist Detail</h4>
+    <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> SoundCloud page</h4>
+    <a href="{{this.soundcloud}}"><img src="https://w.soundcloud.com/icon/assets/images/orange_white_64-94fc761.png"></a>
+    
   </div>
   <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Location</h4>
   <p>{{this.location}}</p>
   </div>
-  
 
   <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Experience</h4>
   <p>{{this.experience}}</p>
@@ -65,7 +59,16 @@
     <form class="create-update-form" method="POST" action="/myprofile/update?_method=PUT">
       <div class="form-group"> <!-- Date input -->
         <label class="control-label" for="date">Date</label>
-        <input class="form-control" name="date" placeholder="MM/DD/YYYY" type="text"/>
+        <!-- <input class="form-control" name="date" placeholder="MM/DD/YYYY" type="text"/> -->
+
+
+<input type="text" name="daterange" value="02/01/2017 - 02/28/2017" />
+
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker();
+});
+</script>
        <!-- Submit button -->
         <button class="btn btn-primary " name="submit" type="submit">Submit</button>
       </div>
@@ -96,6 +99,8 @@
                 <input type class="form-control" name="location" value="{{this.location}}">
                 <label for="genre">Genres</label>
                 <input type class="form-control" name="genre" value="{{this.genre}}">
+                <label for="soundcloud">Soundcloud link</label>
+                <input type class="form-control" name="soundcloud" value="{{this.soundcloud}}">
                 <label for="experience">Experience</label>
                 <textarea rows="6" class="form-control" name="experience">{{this.experience}}</textarea><br>
                 <!--<label class="control-label" for="date">Date</label>

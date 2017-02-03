@@ -104,18 +104,18 @@
 </div>
 <!-- banner -->
 <div class="container">
-  <div class="properties-listing spacer"> <a href="buysalerent.php" class="pull-right viewall">View All Listing</a>
+  <div class="properties-listing spacer"> <!-- <a href="buysalerent.php" class="pull-right viewall">View All Listing</a> -->
     <h2>Featured Artists</h2>
     <div id="owl-example" class="owl-carousel">
     {{#each artist_data}}
       <div class="properties">
-        <div class="image-holder"><img src="{{this.photo}}" class="img-responsive" alt="properties"/>
+        <div class="image-holder"><img src="{{this.photo}}" class="img-responsive" style="width: 200px; height: 133px;" alt="properties"/>
         {{availability this.available}}
         </div>
         <h4><a href="property-detail.php">{{this.artist_name}}</a></h4>
         <p class="price">{{this.genre}}</p>
         <p class="price">{{this.location}}</p>
-        <a class="btn btn-primary" href="property-detail.php">View Details</a>
+        <a class="btn btn-primary" href="/profile/{{this.id}}">View Details</a>
       </div>
       {{/each}}
       <!-- <div class="properties">

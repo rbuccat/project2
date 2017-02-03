@@ -1,24 +1,10 @@
-	<!-- 		<h1 style="color:black;">Artists: </h1>
-			  {{#each artist_data}}
- <div id="owl-example" class="owl-carousel">
-      <div class="properties">
-        <div class="image-holder"><img src="{{this.photo}}" class="img-responsive"/>
-          <div class="status sold">{{this.artist_name}}</div>
-        </div>
-        <h4><a href="property-detail.php">{{this.location}}</a></h4>
-        <p style="color:black;">{{this.genre}}</p>
-      </div>
- </div>
-			
-			  {{/each}}
-			</div> -->
 <div class="container">
 <div class="properties-listing spacer">
 
 <div class="row">
 <div class="col-lg-3 col-sm-4 ">
 
-  <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Search for</h4>
+  <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Search for Artists</h4>
     <form role="form" action="/searchBy" method="POST">
           <input name="location" type="text" class="form-control" placeholder="Search by location">
           
@@ -73,21 +59,20 @@
   <option>Price: Low to High</option>
   <option>Price: High to Low</option>
 </select></div>
-
 </div>-->
-<div class="row">
+
 
      <!-- properties -->
      {{#each artist_data}}
-      <div class="col-lg-4 col-sm-6">
-      <div class="properties">
-         <div class="image-holder"><img src="{{this.photo}}" class="img-responsive" alt="properties">
-          <div class="status sold">Available</div>
+      <div class="col-lg-3 col-sm-4">
+      <div class="properties" style="width: 250px;">
+         <div class="image-holder"><img src="{{this.photo}}" class="img-responsive" style="width: 250px; height: 133px;" alt="properties">
+          {{availability this.available}}
         </div>
-        <h4><a href="property-detail.php">{{this.artist_name}}</a></h4>
+        <h4><a href="#">{{this.artist_name}}</a></h4>
         <p class="price">{{this.genre}}</p>
         <p class="price">{{this.location}}</p>
-        <a class="btn btn-primary" href="property-detail.php">View Details</a>
+        <a class="btn btn-primary" href="/profile/{{this.id}}">View Details</a>
       </div>
       </div>
       <!-- properties -->
@@ -111,5 +96,3 @@
 </div>
 </div>
 </div>
-</div>
-

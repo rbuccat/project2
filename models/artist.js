@@ -21,6 +21,9 @@ module.exports = function(sequelize, DataTypes) {
     experience: {
         type: DataTypes.STRING
     },
+    soundcloud: {
+        type: DataTypes.STRING
+    },
     available: {
     	type: DataTypes.BOOLEAN, 
     	defaultValue: true
