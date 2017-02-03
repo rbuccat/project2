@@ -57,10 +57,11 @@ var hbs = require('handlebars');
 hbs.registerHelper("availability", function(options)
 {
     var stringVal = '';
-    if (options === '1'){
-      stringVal = "<div class='status sold'>" + Available + "</div>"
+    console.log(typeof(options));
+    if (options === true){
+      stringVal = "<div class='status sold'>Available</div>"
     }else{
-      stringVal = "<div class='status new'>" + Not Available + "</div>"
+      stringVal = "<div class='status new'>Not Available</div>"
     }
 
     return new hbs.SafeString(stringVal);

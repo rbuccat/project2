@@ -38,7 +38,8 @@ passport.serializeUser(function(user, done) {
       location: req.body.location,
       genre: req.body.genre,
       experience: req.body.experience,
-      date: req.body.date
+      date: req.body.date,
+      soundcloud: req.body.soundcloud
     },{
         where: {
           id: user.id
