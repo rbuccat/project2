@@ -84,6 +84,7 @@ router.get('/logout', function(req, res){
 
 //home page that shows featured artists on bottom
 router.get("/", function(req, res) {
+console.log('reached the router');
   db.artist.findAll({}).then(function(result) {
     console.log(result); 
    res.render("index", { artist_data: result});
