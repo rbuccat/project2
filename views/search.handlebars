@@ -14,83 +14,32 @@
 
   </div>
 
-
-
 <div class="hot-properties hidden-xs">
-<h4>Hot Properties</h4>
+<h4>Featured Artists</h4>
+{{#each artist_data}}
 <div class="row">
-                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"></div>
+                <div class="col-lg-4 col-sm-5"><img src="{{this.photo}}" class="img-responsive img-circle" alt="properties"></div>
                 <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p> </div>
+                  <h5><a href="/profile/{{this.id}}">{{this.artist_name}}</a></h5>
+                  <p class="price">{{this.genre}}</p> </div>
               </div>
-<div class="row">
-                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"></div>
-                <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p> </div>
-              </div>
-
-<div class="row">
-                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"></div>
-                <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p> </div>
-              </div>
-
-<div class="row">
-                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"></div>
-                <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p> </div>
-              </div>
-
+              {{/each}}
 </div>
-
-
 </div>
-
-<!-- <div class="col-lg-9 col-sm-8">
-<div class="sortby clearfix">
-<div class="pull-left result">Showing: 12 of 100 </div> 
-  <div class="pull-right">
-  <select class="form-control">
-  <option>Sort by</option>
-  <option>Price: Low to High</option>
-  <option>Price: High to Low</option>
-</select></div>
-</div>-->
-
-
-     <!-- properties -->
+     <!-- Artists -->
      {{#each artist_data}}
       <div class="col-lg-3 col-sm-4">
       <div class="properties" style="width: 250px;">
          <div class="image-holder"><img src="{{this.photo}}" class="img-responsive" style="width: 250px; height: 133px;" alt="properties">
           {{availability this.available}}
         </div>
-        <h4><a href="#">{{this.artist_name}}</a></h4>
+        <h4><a href="/profile/{{this.id}}">{{this.artist_name}}</a></h4>
         <p class="price">{{this.genre}}</p>
         <p class="price">{{this.location}}</p>
         <a class="btn btn-primary" href="/profile/{{this.id}}">View Details</a>
       </div>
       </div>
-      <!-- properties -->
       {{/each}}
-
-
-      
-      <!-- <div class="center">
-<ul class="pagination">
-          <li><a href="#">«</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">»</a></li>
-        </ul>
-</div> -->
 
 </div>
 </div>

@@ -38,7 +38,7 @@
   </div>
   
     <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> SoundCloud page</h4>
-    <a href="{{this.soundcloud}}"><img src="https://w.soundcloud.com/icon/assets/images/orange_white_64-94fc761.png"></a>
+    <a href="{{this.soundcloud}}" target="_blank"><img src="https://w.soundcloud.com/icon/assets/images/orange_white_64-94fc761.png"></a>
     
   </div>
   <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Location</h4>
@@ -52,25 +52,19 @@
 
   </div>
   <div class="col-lg-4">
-
+  <form class='create-update-form' method='POST' action='/myprofile/updateavailability?_method=PUT'>
+{{availability2 this.available}}
+</form>
 <div><h4><span class="glyphicon glyphicon-calendar"></span>Availability</h4>
-<h3>{{this.date}}</h3>
     <!-- Form code begins -->
     <form class="create-update-form" method="POST" action="/myprofile/update?_method=PUT">
       <div class="form-group"> <!-- Date input -->
         <label class="control-label" for="date">Date</label>
-        <!-- <input class="form-control" name="date" placeholder="MM/DD/YYYY" type="text"/> -->
 
+<input id="avail" type="text" name="date" data-available={{this.available}} value="02/01/2017 - 02/28/2017" />
 
-<input type="text" name="daterange" value="02/01/2017 - 02/28/2017" />
-
-<script type="text/javascript">
-$(function() {
-    $('input[name="daterange"]').daterangepicker();
-});
-</script>
        <!-- Submit button -->
-        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+        <button id="avail2" class="btn btn-primary" name="submit" type="submit">Submit</button>
       </div>
      </form>
      <!-- Form code ends --> 

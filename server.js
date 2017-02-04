@@ -39,6 +39,7 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
+//Did not work on server.js and so we pasted in artists_controller.js
 // passport.serializeUser(function(user, done) {
 //   console.dir(user);
 //   console.log("THIS IS THE " + user.email + "!!!!!!!!");
@@ -53,6 +54,8 @@ var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+//Handlebars helpers 
 var hbs = require('handlebars');
 hbs.registerHelper("availability", function(options)
 {
@@ -62,6 +65,20 @@ hbs.registerHelper("availability", function(options)
       stringVal = "<div class='status sold'>Available</div>"
     }else{
       stringVal = "<div class='status new'>Not Available</div>"
+    }
+
+    return new hbs.SafeString(stringVal);
+});
+
+//Handlebars helpers
+hbs.registerHelper("availability2", function(options)
+{
+    var stringVal = '';
+    console.log(typeof(options));
+    if (options === true){
+      stringVal = "<span class='button-checkbox'><button type='submit' class='btn btn-available btn-lg' name='available' value=0>Available</button></span>"
+    }else{
+      stringVal = "<span class='button-checkbox'><button type='submit' class='btn btn-notavailable btn-lg' name='available' value=1>Not Available</button></span>"
     }
 
     return new hbs.SafeString(stringVal);

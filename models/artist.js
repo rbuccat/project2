@@ -1,3 +1,4 @@
+//creating the model
 module.exports = function(sequelize, DataTypes) {
   var artist = sequelize.define("artist", {
     photo: {

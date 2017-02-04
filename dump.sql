@@ -33,8 +33,9 @@ CREATE TABLE `artists` (
   `experience` varchar(255) DEFAULT NULL,
   `available` tinyint(1) DEFAULT '1',
   `date` varchar(255) DEFAULT NULL,
+  `soundcloud` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +44,7 @@ CREATE TABLE `artists` (
 
 LOCK TABLES `artists` WRITE;
 /*!40000 ALTER TABLE `artists` DISABLE KEYS */;
-INSERT INTO `artists` VALUES (7,'http://soulsinaction.com/wp-content/uploads/2015/08/Lafa-Taylor.jpg','Lafa Taylor','LA','photo@photo.com','photo','Hip Hop','Lots and Lots',1,'02/16/2017'),(9,'https://photos.smugmug.com/GalleriesFolder/Events/Fritz-Carlton-at-Go-Deep-/i-MvFDp9C/0/XL/DSC_6908-XL.jpg','Fritz Carlton','LA','fritzc@fc.com','1234','House',NULL,0,'02/29/2017'),(10,'https://s3.amazonaws.com/bit-photos/large/6805710.jpeg','Shlump','LA','shlump@shlump.com','1234','Bass',NULL,1,NULL),(11,'http://asset-img.ourstage.com/photo_galleries/EB/WJ/EBWJHKCRDDTZ-520x520.jpg','Boostive','LA','boost@boost.com','1234','Rock',NULL,1,'02/16/2017'),(12,'https://sc-events.s3.amazonaws.com/4232627/main.jpg','Troy Boi','LA','troy@troy.com','1234','Bass',NULL,0,NULL),(13,'https://static1.squarespace.com/static/55c197f9e4b0a73bde199287/t/55d21086e4b0d60073fd24ca/1439830166297/Alina+Main+Photo.jpg?format=2500w','Alina Baraz','LA','alina@alina.com','1234','Bass/Vocalist',NULL,1,NULL),(14,'http://www.billboard.com/files/media/jhene-aiko-650.jpg','Jhene-Aiko','LA','ja@ja.com','1234','R&B',NULL,1,NULL),(15,'/images/dannig.jpg','Danni G','LA','danni@gmail.com','sahar111','Electronic',NULL,1,NULL);
+INSERT INTO `artists` VALUES (7,'http://soulsinaction.com/wp-content/uploads/2015/08/Lafa-Taylor.jpg','Lafa Taylor','LA','photo@photo.com','photo','Hip Hop','Lots and Lots',1,'02/07/2017 - 02/13/2017','https://soundcloud.com/lafataylor'),(9,'https://photos.smugmug.com/GalleriesFolder/Events/Fritz-Carlton-at-Go-Deep-/i-MvFDp9C/0/XL/DSC_6908-XL.jpg','Fritz Carlton','LA','fritzc@fc.com','1234','House',NULL,0,'02/29/2017','https://soundcloud.com/fritzcarlton'),(10,'https://s3.amazonaws.com/bit-photos/large/6805710.jpeg','Shlump','LA','shlump@shlump.com','1234','Bass',NULL,1,NULL,'https://soundcloud.com/shlumpofficial'),(11,'http://asset-img.ourstage.com/photo_galleries/EB/WJ/EBWJHKCRDDTZ-520x520.jpg','Boostive','LA','boost@boost.com','1234','Rock',NULL,1,'02/16/2017','https://soundcloud.com/boostivemusic'),(12,'https://sc-events.s3.amazonaws.com/4232627/main.jpg','Troy Boi','LA','troy@troy.com','1234','Bass',NULL,0,NULL,'https://soundcloud.com/troyboi'),(13,'https://static1.squarespace.com/static/55c197f9e4b0a73bde199287/t/55d21086e4b0d60073fd24ca/1439830166297/Alina+Main+Photo.jpg?format=2500w','Alina Baraz','LA','alina@alina.com','1234','Bass/Vocalist',NULL,1,NULL,'https://soundcloud.com/alinabaraz'),(14,'http://www.billboard.com/files/media/jhene-aiko-650.jpg','Jhene-Aiko','LA','ja@ja.com','1234','R&B',NULL,1,NULL,'https://soundcloud.com/jhene-aiko-1'),(15,'/images/dannig.jpg','Danni G','LA','danni@gmail.com','sahar111','Electronic',NULL,1,NULL,'https://soundcloud.com/danni-g'),(73,'https://a2-images.myspacecdn.com/images03/25/92441737e34d4196a8095767643f513b/300x300.jpg','Talia Namini','LA','talia.namini@gmail.com','1234','R&B',NULL,1,NULL,'https://soundcloud.com/talia-namini');
 /*!40000 ALTER TABLE `artists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-03 14:19:51
+-- Dump completed on 2017-02-03 22:38:36
