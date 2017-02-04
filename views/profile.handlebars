@@ -19,7 +19,6 @@
 <div class="row">
 <div class="col-md-6"><h2 id="artist" data-artist="{{this.artist_name}}">{{artist_data.artist_name}}</h2>
 </div>
-<!-- <div class="col-md-6"><button class="btn btn-info"   data-toggle="modal" data-target="#profilepop">Edit Profile</button></div> -->
 
 </div>
 <div class="row">
@@ -38,7 +37,7 @@
   </div>
   
     <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> SoundCloud page</h4>
-    <iframe allowtransparency="true" scrolling="no" frameborder="no" src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Flafataylor&color=orange_white&size=64" style="width: 64px; height: 64px;"></iframe>
+    <a href="{{artist_data.soundcloud}}" target="_blank"><img src="https://w.soundcloud.com/icon/assets/images/orange_white_64-94fc761.png"></a>
     
   </div>
   <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Location</h4>
@@ -54,24 +53,20 @@
   </div>
   <div class="col-lg-4">
 <div class="col-lg-12  col-sm-6">
-<div><h4><span class="glyphicon glyphicon-calendar"></span>Availability</h4>
+<div>
+{{availability2 artist_data.available}}
+<h4><span class="glyphicon glyphicon-calendar">
+</span>Availability</h4>
 <h3>{{artist_data.date}}</h3>
 		<!-- Form code begins -->
     <form class="create-update-form" method="POST" action="#">
       <div class="form-group"> <!-- Date input -->
         <label class="control-label" for="date">Date</label>
-        <input type="text" name="daterange" value="02/01/2017 - 02/28/2017" />
-
-<script type="text/javascript">
-$(function() {
-    $('input[name="daterange"]').daterangepicker();
-});
-</script>
+        <input id="avail" type="text" name="date" data-available={{artist_data.available}} value="02/01/2017 - 02/28/2017" />
        <!-- Submit button -->
-        <!-- <button class="btn btn-primary " data-toggle="modal" data-target="#bookme" type="submit">Submit</button> -->
       </div>
      </form>
-    <button class="btn btn-primary " style="margin-bottom: 20px;" data-toggle="modal" data-target="#bookme" type="submit">Book</button> 
+    <button id="avail2" class="btn btn-primary " style="margin: -20px 0 20px 0;" data-toggle="modal" data-target="#bookme" type="submit">Request to Book</button> 
     </div>
      <!-- Form code ends -->
 <div class="col-lg-12 col-sm-6 ">

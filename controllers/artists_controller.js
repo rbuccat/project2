@@ -1,14 +1,11 @@
-//each route, we need to send and recieve data
-//create and update for myprofile
-//create logic that looks up artist by id
+//controller file for all routes
 
+//dependancies
 var express = require("express");
 var router = express.Router();
 var db = require("../models");
 var passport = require("passport");
-
 var nodemailer =require("nodemailer");
-
 var smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth:{
@@ -17,9 +14,16 @@ var smtpTransport = nodemailer.createTransport({
     }
 });
 
+//logging in
+router.post('/login', passport.authenticate('local', { 
+  successRedirect: '/',
+    failureRedirect: '/login' 
+})
+);
+
+//logged in user - myprofile
 passport.serializeUser(function(user, done) {
   console.dir(user);
-  console.log("THIS IS THE " + user.id + "!!!!!!!!");
   done(null, user.id);
   router.get("/myprofile", function(req, res) {
    db.artist.findOne({
@@ -39,7 +43,20 @@ passport.serializeUser(function(user, done) {
       genre: req.body.genre,
       experience: req.body.experience,
       date: req.body.date,
-      soundcloud: req.body.soundcloud
+      soundcloud: req.body.soundcloud,
+      available: req.body.available
+    },{
+        where: {
+          id: user.id
+        }
+      })
+    .then(function() {
+      res.redirect("/myprofile");
+    });
+  });
+  router.put("/myprofile/updateavailability", function(req, res) {
+    db.artist.update({
+      available: req.body.available
     },{
         where: {
           id: user.id
@@ -51,14 +68,21 @@ passport.serializeUser(function(user, done) {
   });
 });
 
+
+
+//logging user out (***needs fixing)
 passport.deserializeUser(function(id, done) {
   db.artist.findById(id, function(err, user) {
-    done(err, user);
+    done(err, user);  
   });
 });
 
+router.get('/logout', function(req, res){
+ req.logout();
+ res.redirect('/');
+});
 
-
+//home page that shows featured artists on bottom
 router.get("/", function(req, res) {
   db.artist.findAll({}).then(function(result) {
     console.log(result); 
@@ -66,35 +90,10 @@ router.get("/", function(req, res) {
 });
 });
 
-router.post('/login', passport.authenticate('local', { 
-	successRedirect: '/',
-    failureRedirect: '/login' 
-})
-);
-
+//modal to register new user
 router.get("/register", function(req, res) {
  res.render('register');
 });
-
-
-// router.post('/login',
-//   passport.authenticate('local'),
-//   function(req, res) {
-//   // If this function gets called, authentication was successful.
-//   // `req.user` contains the authenticated user.
-//   res.redirect('/users/' + req.user.username);
-// });
-
-// router.post('/login',
-//   passport.authenticate('local', { successRedirect: '/',
-//                                    failureRedirect: '/login',
-//                                    failureFlash: true })
-// );
-
-
-// passport.authenticate('local', { failureFlash: 'Invalid username or password.' });
-
-// passport.authenticate('local', { successFlash: 'Welcome!' });
 
 router.post("/register/create", function(req, res) {
   db.artist.create({
@@ -102,21 +101,15 @@ router.post("/register/create", function(req, res) {
     email: req.body.email,
     artist_password: req.body.artist_password,
     genre: req.body.genre,
-    photo: req.body.photo
+    location: req.body.location,
+    photo: req.body.photo,
+    soundcloud: req.body.soundcloud
   }).then(function(){
     res.redirect("/");
   })
 });
 
-
-
-
-// router.get("/search", function(req, res) {
-//     db.artist.findAll({}).then(function(result) {  
-//    res.render("search", { artist_data: result}); 
-//    });
-// });
-
+//search function
 router.post("/searchBy", function(req, res) {
     db.artist.findAll({
       where: {
@@ -131,45 +124,26 @@ router.post("/searchBy", function(req, res) {
 });
 })    
 
-
-
-// router.get("/search", function(req, res) {
-//     db.artist.findAll({}).then(function(result) {
-//    res.render("search", { artist_data: result});    
-
-//    });
-// });
-
+//messages page
 router.get("/messages", function(req, res) {
  res.render('messages');
 });
 
-
-
-
-
+//artist's profile by id
 router.get("/profile/:id", function(req, res) {
       db.artist.findOne({
       where: {id: req.params.id}
    }).then(function(Artist) {
    res.render('profile', { artist_data: Artist });    
    });
-
-// router.get("/profile/:id", function(req, res) {
-//       db.artist.findOne({
-//        where: {id: req.params.id}
-//    }).then(function(Artist) {
-//    res.render('profile', { artist_data: Artist });    
-//    });
-
 });
 
-// mailFunction
+//For the newsletter (***needs fixing)
 router.post("/mailMe", function(req, res) {
         console.log(req.body);
         var mailOptions={
 
-        to : "helenavolskaja@gmail.com",
+        to : "",
         subject : "New Artist",
         text : req.body.content
         };

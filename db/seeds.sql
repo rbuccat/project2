@@ -1,17 +1,8 @@
-INSERT INTO artists (photo, artist_name, location, email, artist_password, genre, available) 
-VALUES ('http://www.theplace2.ru/archive/brian_molko/img/3-104.jpg', 
-	"Brain", "Los Angeles", "Helenavolskaja@gmail.com", "password", 
-"Rock", true);
-
-INSERT INTO artists (photo, artist_name, location, email, artist_password, genre, available) 
-VALUES ('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzaQ3SMaoL0J0Wfoq8RIopPARILY4xcMVzkhEbL2cMJAV2Lrbe', "Britney", "New York", "Helenavolskaja@gmail.com", "password", 
-"Pop", true);
-
-INSERT INTO artists (photo, artist_name, location, email, artist_password, genre, available) 
-VALUES ('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRd348_ut-xk6itA22HM_8OCAy0_6zXkaRTsvQkvPoJIGEiJd_Inw', "Stefan", "New York", "Helenavolskaja@gmail.com", "password", 
-"Rap", true);
-
-
-INSERT INTO artists (photo, artist_name, location, email, artist_password, genre, available) 
-VALUES ('http://www.mens-hairstyle.com/wp-content/uploads/2016/12/Top-Guys-Dark-Hair-2016.jpg', "Mike", "Los Angeles", "Helenavolskaja@gmail.com", "password", 
-"Pop", true);
+INSERT INTO artists (id,photo,artist_name,location,email,artist_password,genre,experience,available,date,soundcloud) VALUES 7,http://soulsinaction.com/wp-content/uploads/2015/08/Lafa-Taylor.jpg,"Lafa Taylor",LA,photo@photo.com,photo,"Hip Hop","Lots and Lots",1,"02/07/2017 - 02/13/2017",https://soundcloud.com/lafataylor
+INSERT INTO artists (id,photo,artist_name,location,email,artist_password,genre,experience,available,date,soundcloud) VALUES 9,https://photos.smugmug.com/GalleriesFolder/Events/Fritz-Carlton-at-Go-Deep-/i-MvFDp9C/0/XL/DSC_6908-XL.jpg,"Fritz Carlton",LA,fritzc@fc.com,1234,House,NULL,0,02/29/2017,https://soundcloud.com/fritzcarlton
+INSERT INTO artists (id,photo,artist_name,location,email,artist_password,genre,experience,available,date,soundcloud) VALUES 10,https://s3.amazonaws.com/bit-photos/large/6805710.jpeg,Shlump,LA,shlump@shlump.com,1234,Bass,NULL,1,NULL,https://soundcloud.com/shlumpofficial
+INSERT INTO artists (id,photo,artist_name,location,email,artist_password,genre,experience,available,date,soundcloud) VALUES 11,http://asset-img.ourstage.com/photo_galleries/EB/WJ/EBWJHKCRDDTZ-520x520.jpg,Boostive,LA,boost@boost.com,1234,Rock,NULL,1,02/16/2017,https://soundcloud.com/boostivemusic
+INSERT INTO artists (id,photo,artist_name,location,email,artist_password,genre,experience,available,date,soundcloud) VALUES 12,https://sc-events.s3.amazonaws.com/4232627/main.jpg,"Troy Boi",LA,troy@troy.com,1234,Bass,NULL,0,NULL,https://soundcloud.com/troyboi
+INSERT INTO artists (id,photo,artist_name,location,email,artist_password,genre,experience,available,date,soundcloud) VALUES 13,https://static1.squarespace.com/static/55c197f9e4b0a73bde199287/t/55d21086e4b0d60073fd24ca/1439830166297/Alina+Main+Photo.jpg?format=2500w,"Alina Baraz",LA,alina@alina.com,1234,Bass/Vocalist,NULL,1,NULL,https://soundcloud.com/alinabaraz
+INSERT INTO artists (id,photo,artist_name,location,email,artist_password,genre,experience,available,date,soundcloud) VALUES 14,http://www.billboard.com/files/media/jhene-aiko-650.jpg,Jhene-Aiko,LA,ja@ja.com,1234,R&B,NULL,1,NULL,https://soundcloud.com/jhene-aiko-1
+INSERT INTO artists (id,photo,artist_name,location,email,artist_password,genre,experience,available,date,soundcloud) VALUES 15,/images/dannig.jpg,"Danni G",LA,danni@gmail.com,sahar111,Electronic,NULL,1,NULL,https://soundcloud.com/danni-g

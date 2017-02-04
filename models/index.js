@@ -1,3 +1,5 @@
+//default model infrastructure for Sequelize
+
 'use strict';
 
 var fs        = require('fs');
